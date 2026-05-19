@@ -3,7 +3,7 @@
 > 공통사항(레포 구조, 릴리즈 절차, 코딩 규칙)은 상위 폴더의 [`../CLAUDE.md`](../CLAUDE.md)를 참조.
 
 ## 개요
-- **애드온**: SimpleRepu v1.0.0
+- **애드온**: SimpleRepu v2.4.0
 - **레포**: `cdcdcd050/SimpleRepu`
 - **대상 클라이언트**: WoW BCC (Interface: 20505)
 - **용도**: TBC 평판과 관련 던전을 표시하는 가이드
