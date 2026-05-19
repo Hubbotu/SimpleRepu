@@ -370,6 +370,8 @@ end
 local function HidePopup()
     HideSubTooltip()
     if popupTip then
+        popupTip:EnableKeyboard(false)
+        popupTip:SetScript("OnKeyDown", nil)
         LibQTip:Release(popupTip)
         popupTip = nil
     end
@@ -385,6 +387,17 @@ local function ShowPopup()
     popupTip:RegisterForDrag("LeftButton")
     popupTip:SetScript("OnDragStart", popupTip.StartMoving)
     popupTip:SetScript("OnDragStop", SavePopupPos)
+
+    -- ESC closes; let other keys pass through so chat / hotkeys still work
+    popupTip:EnableKeyboard(true)
+    popupTip:SetPropagateKeyboardInput(true)
+    popupTip:SetScript("OnKeyDown", function(self, key)
+        self:SetPropagateKeyboardInput(true)
+        if key == "ESCAPE" then
+            self:SetPropagateKeyboardInput(false)
+            HidePopup()
+        end
+    end)
 
     popupTip:ClearAllPoints()
     local pos = SimpleRepuDB.popupPos
